@@ -14,17 +14,9 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $schedules = auth()->user()->schedules;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response($schedules, 200);
     }
 
     /**
@@ -35,7 +27,19 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'client' => 'required|string',
+            'service' => 'required|string',
+            'description' => 'required|string'
+        ]);
+
+        $schedule = auth()->user()->schedules()->create([
+            'client' => $data['client'],
+            'service' => $data['service'],
+            'decription' => $data['description']
+        ]);
+
+        return response($schedule, 201);
     }
 
     /**
@@ -46,18 +50,9 @@ class ScheduleController extends Controller
      */
     public function show(Schedule $schedule)
     {
-        //
-    }
+        abort_unless(auth()->user()->owns($schedule), 403);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Schedule  $schedule
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Schedule $schedule)
-    {
-        //
+        return response($schedule, 200);
     }
 
     /**
@@ -69,7 +64,20 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        //
+        abort_unless(auth()->user()->owns($schedule), 403);
+
+        // I'm not sure if required is correct here, 
+        // Since i don't necessarily want to update everything everytime,
+        // But i also don't want to update to null.
+        $data = $request->validate([
+            'client' => 'required|string',
+            'service' => 'required|string',
+            'description' => 'required|string'
+        ]);
+
+        $schedule->update($data);
+
+        return response($schedule, 200);
     }
 
     /**
@@ -80,6 +88,10 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        //
+        abort_unless(auth()->user()->owns($schedule), 403);
+
+        $schedule->delete();
+
+        return response(null, 204);
     }
 }

@@ -36,4 +36,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function schedules() {
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function owns(Schedule $schedule) {
+        return $this->id == $schedule->user_id;
+    }
 }
