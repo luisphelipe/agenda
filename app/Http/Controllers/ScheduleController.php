@@ -14,9 +14,12 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = auth()->user()->schedules;
+        $schedules = auth()->user()->schedules()->orderBy('schedule', 'ASC')->get();
 
-        return response($schedules, 200);
+        return response()->json([
+            'success' => true,
+            'data' => $schedules
+        ], 200);
     }
 
     /**
@@ -30,16 +33,16 @@ class ScheduleController extends Controller
         $data = $request->validate([
             'client' => 'required|string',
             'service' => 'required|string',
-            'description' => 'required|string'
+            'schedule' => 'required|date',
+            'description' => 'required|string',
         ]);
 
-        $schedule = auth()->user()->schedules()->create([
-            'client' => $data['client'],
-            'service' => $data['service'],
-            'decription' => $data['description']
-        ]);
+        $schedule = auth()->user()->schedules()->create($data);
 
-        return response($schedule, 201);
+        return response()->json([
+            'success' => true,
+            'data' => $schedule
+        ], 201);
     }
 
     /**
@@ -52,7 +55,10 @@ class ScheduleController extends Controller
     {
         abort_unless(auth()->user()->owns($schedule), 401);
 
-        return response($schedule, 200);
+        return response()->json([
+            'success' => true,
+            'data' => $schedule
+        ], 200);
     }
 
     /**
@@ -70,14 +76,18 @@ class ScheduleController extends Controller
         // Since i don't necessarily want to update everything everytime,
         // But i also don't want to update to null.
         $data = $request->validate([
-            'client' => 'required|string',
-            'service' => 'required|string',
-            'description' => 'required|string'
+            'service' => 'nullable|string',
+            'schedule' => 'nullable|date',
+            'description' => 'nullable|string',
+            'archived_at' => 'nullable|date'
         ]);
 
         $schedule->update($data);
 
-        return response($schedule, 200);
+        return response()->json([
+            'success' => true,
+            'data' => $schedule
+        ], 200);
     }
 
     /**
@@ -92,6 +102,8 @@ class ScheduleController extends Controller
 
         $schedule->delete();
 
-        return response(null, 204);
+        return response()->json([
+            'success' => true
+        ], 204);
     }
 }

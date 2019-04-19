@@ -13,8 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    // public auth routes
+    Route::post('login', 'AuthController@login');
+    Route::post('signup', 'AuthController@signup');
+
+    // private auth routes
+    Route::group(['middleware' => 'auth:api'], function() {
+        Route::get('logout', 'AuthController@logout');
+        Route::get('user', 'AuthController@user');
+    });
 });
 
-Route::resource('schedules', 'ScheduleController');
+Route::group(['middleware' => 'auth:api'], function() {
+    // other private routes
+    Route::resource('schedules', 'ScheduleController');
+});
+

@@ -19,7 +19,9 @@ class CreateSchedulesTable extends Migration
 
             $table->string('client');
             $table->string('service');
-            $table->text('description');
+            $table->dateTime('schedule');
+            $table->text('description')->nullable();
+            $table->timestamp('archived_at')->nullable();
 
             $table->timestamps();
 
