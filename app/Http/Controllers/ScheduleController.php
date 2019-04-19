@@ -50,7 +50,7 @@ class ScheduleController extends Controller
      */
     public function show(Schedule $schedule)
     {
-        abort_unless(auth()->user()->owns($schedule), 403);
+        abort_unless(auth()->user()->owns($schedule), 401);
 
         return response($schedule, 200);
     }
@@ -64,7 +64,7 @@ class ScheduleController extends Controller
      */
     public function update(Request $request, Schedule $schedule)
     {
-        abort_unless(auth()->user()->owns($schedule), 403);
+        abort_unless(auth()->user()->owns($schedule), 401);
 
         // I'm not sure if required is correct here, 
         // Since i don't necessarily want to update everything everytime,
@@ -88,7 +88,7 @@ class ScheduleController extends Controller
      */
     public function destroy(Schedule $schedule)
     {
-        abort_unless(auth()->user()->owns($schedule), 403);
+        abort_unless(auth()->user()->owns($schedule), 401);
 
         $schedule->delete();
 
