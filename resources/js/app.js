@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes React and other helpers. It's a great starting point while
@@ -7,10 +6,44 @@
 
 require('./bootstrap');
 
-/**
- * Next, we will create a fresh React component instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom'
 
-require('./components/Example');
+import Development from './constants/Server'
+import ScheduleItem from './components/ScheduleItem'
+
+
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            scheduleItems: [],
+        };
+    }
+
+    render() {
+        const ScheduleItems =  
+            this.state.scheduleItems.map((item) => 
+                <ScheduleItem item={item} key={item.id} />    
+            ) 
+
+        return (
+            <div>
+                { ScheduleItems }
+            </div>
+        );
+    }
+
+    componentDidMount() {
+        axios
+        .get(Development.url + '/schedules')
+        .then(response => {
+            console.log(response)
+            this.setState({
+                scheduleItems: response.data.data,
+            });
+        })
+    }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
