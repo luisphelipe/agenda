@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -38,11 +39,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function schedules() {
+    public function schedules()
+    {
         return $this->hasMany(Schedule::class);
     }
 
-    public function owns(Schedule $schedule) {
+    public function todaySchedules()
+    {
+        return $this->schedules()
+            ->whereDate('schedule', '=', Carbon::now());
+    }
+
+    public function owns(Schedule $schedule)
+    {
         return $this->id == $schedule->user_id;
     }
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+// use App\Schedule;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+
+        $daily_schedules = $user
+            ->todaySchedules;
+
+        // $open_reminders = $user
+        //     ->openReminders;
+
+        return view('home.index', [
+            'schedules' => $daily_schedules,
+            // 'reminders' => $open_reminders,
+        ]);
     }
 }

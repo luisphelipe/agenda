@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Schedule;
 use Illuminate\Http\Request;
 
-class ScheduleController extends Controller
+class SchedulesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,12 +14,24 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = auth()->user()->schedules()->orderBy('schedule', 'ASC')->get();
+        $schedules = auth()->user()
+            ->schedules()
+            ->orderBy('schedule', 'ASC')
+            ->get();
 
-        return response()->json([
-            'success' => true,
-            'data' => $schedules
-        ], 200);
+        return view('schedules.index', [
+            'schedules' => $schedules
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('schedules.create');
     }
 
     /**
@@ -37,12 +49,14 @@ class ScheduleController extends Controller
             'description' => 'required|string',
         ]);
 
-        $schedule = auth()->user()->schedules()->create($data);
+        $schedule = auth()->user()
+            ->schedules()
+            ->create($data);
 
-        return response()->json([
-            'success' => true,
-            'data' => $schedule
-        ], 201);
+        return redirect()->action(
+            'ScheduleController@show',
+            ['schedule' => $schedule]
+        );
     }
 
     /**
@@ -55,10 +69,22 @@ class ScheduleController extends Controller
     {
         abort_unless(auth()->user()->owns($schedule), 401);
 
-        return response()->json([
-            'success' => true,
-            'data' => $schedule
-        ], 200);
+        return view('schedules.show', [
+            'schedule' => $schedule
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Schedule  $schedule
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Schedule $schedule)
+    {
+        return view('schedules.edit', [
+            'schedule' => $schedule
+        ]);
     }
 
     /**
@@ -72,7 +98,7 @@ class ScheduleController extends Controller
     {
         abort_unless(auth()->user()->owns($schedule), 401);
 
-        // I'm not sure if required is correct here, 
+        // I' m not sure if required is correct here,
         // Since i don't necessarily want to update everything everytime,
         // But i also don't want to update to null.
         $data = $request->validate([
@@ -84,10 +110,10 @@ class ScheduleController extends Controller
 
         $schedule->update($data);
 
-        return response()->json([
-            'success' => true,
-            'data' => $schedule
-        ], 200);
+        return redirect()->action(
+            'ScheduleController@show',
+            ['schedule' => $schedule]
+        );
     }
 
     /**
@@ -102,8 +128,6 @@ class ScheduleController extends Controller
 
         $schedule->delete();
 
-        return response()->json([
-            'success' => true
-        ], 204);
+        return redirect()->action('ScheduleController@index');
     }
 }
