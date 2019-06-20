@@ -10667,3 +10667,35 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+html,
+body {
+  height: 100vh;
+}
+
+div#app,
+div#app > div,
+div#app > div > div,
+div#app > div > div > nav#left-navbar,
+div#app > div > div > nav#left-navbar > div,
+div#app > div > div > nav#left-navbar > div > div {
+  height: 100vh;
+}
+
+div#app > div > div > nav#left-navbar > div,
+div#app > div > div > nav#left-navbar > div > div,
+div#app > div > div > nav#left-navbar > div > div > ul {
+  display: flex;
+  flex-direction: column;
+}
+
+div#app > div > div > nav#left-navbar > div,
+div#app > div > div > nav#left-navbar > div > div {
+  justify-content: start;
+  align-items: start;
+}
+
+nav {
+  margin: 0px;
+  padding: 0px;
+}
+
