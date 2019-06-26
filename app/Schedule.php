@@ -10,7 +10,18 @@ class Schedule extends Model
         'client', 'service', 'schedule', 'description'
     ];
 
-    public function owner() {
+    public function owner()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function link()
+    {
+        return '/schedules/' . $this->id;
+    }
+
+    public function formattedSchedule()
+    {
+        return date_format(date_create($this->schedule), 'd/m/Y H:i:s');
     }
 }

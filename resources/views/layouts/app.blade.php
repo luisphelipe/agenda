@@ -22,10 +22,10 @@
 <body>
     <div id="app">
         <div class="row w-100 m-0">
-            <div class="col-md-3" style="padding: 0px">
+            <div style="padding: 0px">
                 @include('layouts.left_navbar')
             </div>
-            <div class="col-md-9" style="padding: 0px">
+            <div id="excluding-sidebar" style="padding: 0px">
                 @include('layouts.top_navbar')
 
                 <main class="py-4">

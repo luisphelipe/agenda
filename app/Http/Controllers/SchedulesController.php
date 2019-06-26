@@ -54,7 +54,7 @@ class SchedulesController extends Controller
             ->create($data);
 
         return redirect()->action(
-            'ScheduleController@show',
+            'SchedulesController@show',
             ['schedule' => $schedule]
         );
     }
@@ -102,6 +102,7 @@ class SchedulesController extends Controller
         // Since i don't necessarily want to update everything everytime,
         // But i also don't want to update to null.
         $data = $request->validate([
+            'client' => 'nullable|string',
             'service' => 'nullable|string',
             'schedule' => 'nullable|date',
             'description' => 'nullable|string',
@@ -111,7 +112,7 @@ class SchedulesController extends Controller
         $schedule->update($data);
 
         return redirect()->action(
-            'ScheduleController@show',
+            'SchedulesController@show',
             ['schedule' => $schedule]
         );
     }
@@ -128,6 +129,6 @@ class SchedulesController extends Controller
 
         $schedule->delete();
 
-        return redirect()->action('ScheduleController@index');
+        return redirect()->action('SchedulesController@index');
     }
 }

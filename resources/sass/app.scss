@@ -7,9 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+#left-navbar,
 .navbar-laravel {
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    box-shadow: 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 html,
@@ -26,11 +27,30 @@ div#app>div>div>nav#left-navbar>div>div {
     height: 100vh;
 }
 
+div#app>div>div>nav#left-navbar,
+div#app>div>div>nav#left-navbar>div {
+    /* Set the width of the sidebar */
+    width: 25%;
+    /* Fixed Sidebar (stay in place on scroll) */
+    position: fixed;
+    /* Stay on top */
+    z-index: 1;
+    /* Stay at the top */
+    top: 0;
+    left: 0;
+    padding-top: 1.5rem;
+}
+
+div#app>div>div>nav#left-navbar>div {
+    padding-top: 1.5rem;
+}
+
 div#app>div>div>nav#left-navbar>div,
 div#app>div>div>nav#left-navbar>div>div,
 div#app>div>div>nav#left-navbar>div>div>ul {
     display: flex;
     flex-direction: column;
+    margin-top: 0px !important;
 }
 
 
@@ -43,4 +63,33 @@ div#app>div>div>nav#left-navbar>div>div {
 nav {
     margin: 0px;
     padding: 0px;
+}
+
+div#excluding-sidebar {
+    margin-left: 25%;
+    width: 75%;
+    position: absolute;
+    /* Stay on top */
+    top: 0;
+}
+
+div#lower-nav-links {
+    margin-top: 10vh;
+}
+
+// home css
+div#home-right-panel-top {
+    height: 35vh;
+}
+
+div#home-right-panel-bot {
+    height: 48vh;
+}
+
+div#home-left-panel {
+    height: 84vh;
+}
+
+label {
+    margin-top: 1rem;
 }
