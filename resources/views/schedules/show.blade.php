@@ -11,15 +11,26 @@
             <p class="card-text">{{ $schedule->client }}</p>
             <p class="card-text">{{ $schedule->service }}</p>
             <p class="card-text">{{ $schedule->formattedSchedule() }}</p>
-            <p class="card-text">{{ $schedule->description }}</p>
-            <p><a href={{ $schedule->link() . "/edit" }}>Editar</a></p>
-            <form action="{{ $schedule->link() }}" method="POST">
+            <p class="card-text mr-4">{{ $schedule->description }}</p>
+
+            <p>
+                <div class="d-flex justify-content-between">
+                    <a href={{ $schedule->link() . "/edit" }}>Editar</a>
+                    <a href={{ $schedule->link() }} onclick="submitDeleteForm(event)" class="mr-4 red-link">Excluir</a>
+                </div>
+            </p>
+            <form id="deleteForm" action="{{ $schedule->link() }}" method="POST">
                 @method('DELETE')
                 @csrf
-            
-                <button type="submit" class="btn btn-link" style="padding: 0px; margin: 0px; border: 0px">Excluir</button>
-            </form>
         </div>
     </div>
 </div>
 @endsection
+
+<script>
+function submitDeleteForm(e) {
+    e.preventDefault();
+    let deleteForm = document.querySelector('#deleteForm');
+    deleteForm.submit();
+}
+ </script>

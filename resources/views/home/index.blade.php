@@ -15,13 +15,12 @@
             <div id="home-right-panel-top" class="card mb-2 pl-2 pt-1">
                 <div class="card-body">
                     <h4 class="card-title">Acoes</h4>
-                    <p class="card-text"></p>
+                    <a href="{{ route('schedules.create') }}">{{ __('Criar agendamento') }}</a> 
                 </div>
             </div>
             <div id="home-right-panel-bot" class="card pl-2 pt-1">
                 <div class="card-body">
                     <h4 class="card-title">Lembretes</h4>
-                    <p class="card-text"></p>
                 </div>
             </div>
         </div>

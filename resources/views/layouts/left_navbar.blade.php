@@ -1,6 +1,6 @@
 <nav id="left-navbar">
     <div class="container mt-4">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav w-100">
             <div>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ url('/') }}">{{ __('Inicio') }}</a> 

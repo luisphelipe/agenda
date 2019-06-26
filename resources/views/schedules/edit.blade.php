@@ -14,14 +14,14 @@
                 @method('PUT')
                 @csrf
 
-                <label for="service">Servico*</label>
-                <div class="input-group">
-                    <input class="form-control" type="text" name="service" id="service" placeholder="Selecione o servico" value="{{ $schedule->service }}">
-                </div>
-
                 <label for="client">Cliente*</label> 
                 <div class="input-group">
                     <input class="form-control" type="text" name="client" id="client" placeholder="Selecione a cliente" value="{{ $schedule->client }}">
+                </div>
+
+                <label for="service">Servico*</label>
+                <div class="input-group">
+                    <input class="form-control" type="text" name="service" id="service" placeholder="Selecione o servico" value="{{ $schedule->service }}">
                 </div>
 
                 <label for="schedule">Data*</label>

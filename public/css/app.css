@@ -34,7 +34,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Nunito", sans-serif;
+  --font-family-sans-serif: sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -66,13 +66,13 @@ section {
 
 body {
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: sans-serif;
   font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.6;
   color: #212529;
   text-align: left;
-  background-color: #f8fafc;
+  background-color: #fff;
 }
 
 [tabindex="-1"]:focus {
@@ -517,7 +517,7 @@ mark,
 
 .img-thumbnail {
   padding: 0.25rem;
-  background-color: #f8fafc;
+  background-color: #fff;
   border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   max-width: 100%;
@@ -4100,15 +4100,15 @@ input[type=button].btn-block {
 }
 
 .custom-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range:focus::-ms-thumb {
-  box-shadow: 0 0 0 1px #f8fafc, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
 }
 
 .custom-range::-moz-focus-outer {
@@ -4308,8 +4308,8 @@ input[type=button].btn-block {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #495057;
-  background-color: #f8fafc;
-  border-color: #dee2e6 #dee2e6 #f8fafc;
+  background-color: #fff;
+  border-color: #dee2e6 #dee2e6 #fff;
 }
 
 .nav-tabs .dropdown-menu {
@@ -6148,7 +6148,7 @@ a.close.disabled {
   z-index: 1070;
   display: block;
   margin: 0;
-  font-family: "Nunito", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -6273,7 +6273,7 @@ a.close.disabled {
   z-index: 1060;
   display: block;
   max-width: 276px;
-  font-family: "Nunito", sans-serif;
+  font-family: sans-serif;
   font-style: normal;
   font-weight: 400;
   line-height: 1.6;
@@ -10664,12 +10664,13 @@ a.text-dark:focus {
 
 #left-navbar,
 .navbar-laravel {
-  background-color: #fff;
-  box-shadow: 2px 4px rgba(0, 0, 0, 0.04);
+  background-color: #f2f6f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 html,
 body {
+  background-color: #c8dad3;
   height: 100vh;
 }
 
@@ -10745,5 +10746,43 @@ div#home-left-panel {
 
 label {
   margin-top: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: #222;
+}
+
+.unset {
+  all: unset;
+}
+
+#left-navbar * > a {
+  color: #222;
+  font-size: 1rem;
+}
+
+button.unset,
+p.card-text > a,
+p.card-text * > a,
+div.card-body > a,
+div.card-body * > a {
+  border-bottom: 1px solid #63707e;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a.red-link {
+  color: #e3342f !important;
+}
+
+a.red-link:hover {
+  color: red !important;
+}
+
+#lower-nav-links {
+  background-color: #c8dad3;
 }
 
