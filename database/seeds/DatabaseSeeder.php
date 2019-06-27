@@ -14,8 +14,12 @@ class DatabaseSeeder extends Seeder
         $admin = factory(App\User::class)->create([
             'email' => 'admin@test.com'
         ]);
-        
+
         factory(App\Schedule::class, 20)->create([
+            'user_id' => $admin->id
+        ]);
+
+        factory(App\Reminder::class, 20)->create([
             'user_id' => $admin->id
         ]);
     }

@@ -27,15 +27,15 @@ class HomeController extends Controller
     {
         $user = auth()->user();
 
-        $daily_schedules = $user
+        $dailySchedules = $user
             ->todaySchedules;
 
-        // $open_reminders = $user
-        //     ->openReminders;
+        $dailyReminders  = $user
+            ->todayReminders;
 
         return view('home.index', [
-            'schedules' => $daily_schedules,
-            // 'reminders' => $open_reminders,
+            'schedules' => $dailySchedules ?? [],
+            'reminders' => $dailyReminders ?? [],
         ]);
     }
 }

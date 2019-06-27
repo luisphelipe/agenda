@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Schedule;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class SchedulesController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +17,18 @@ class SchedulesController extends Controller
     {
         $schedules = auth()->user()
             ->schedules()
+            ->whereNull('archived_at')
             ->orderBy('schedule', 'ASC')
             ->get();
 
+        $archivedSchedules = auth()->user()
+            ->schedules()
+            ->whereNotNull('archived_at')
+            ->orderBy('schedule', 'DESC')
+            ->get();
+
         return view('schedules.index', [
-            'schedules' => $schedules
+            'schedules' => $schedules->concat($archivedSchedules)
         ]);
     }
 
@@ -46,7 +54,7 @@ class SchedulesController extends Controller
             'client' => 'required|string',
             'service' => 'required|string',
             'schedule' => 'required|date',
-            'description' => 'required|string',
+            'description' => 'nullable|string',
         ]);
 
         $schedule = auth()->user()
@@ -54,7 +62,7 @@ class SchedulesController extends Controller
             ->create($data);
 
         return redirect()->action(
-            'SchedulesController@show',
+            'ScheduleController@show',
             ['schedule' => $schedule]
         );
     }
@@ -98,21 +106,17 @@ class SchedulesController extends Controller
     {
         abort_unless(auth()->user()->owns($schedule), 401);
 
-        // I' m not sure if required is correct here,
-        // Since i don't necessarily want to update everything everytime,
-        // But i also don't want to update to null.
         $data = $request->validate([
             'client' => 'nullable|string',
             'service' => 'nullable|string',
             'schedule' => 'nullable|date',
             'description' => 'nullable|string',
-            'archived_at' => 'nullable|date'
         ]);
 
         $schedule->update($data);
 
         return redirect()->action(
-            'SchedulesController@show',
+            'ScheduleController@show',
             ['schedule' => $schedule]
         );
     }
@@ -129,6 +133,20 @@ class SchedulesController extends Controller
 
         $schedule->delete();
 
-        return redirect()->action('SchedulesController@index');
+        return redirect()->action('ScheduleController@index');
+    }
+
+    public function archive(Schedule $schedule)
+    {
+        abort_unless(auth()->user()->owns($schedule), 401);
+
+        $schedule->update([
+            'archived_at' => (String)Carbon::now()
+        ]);
+
+        return redirect()->action(
+            'ScheduleController@show',
+            ['schedule' => $schedule]
+        );
     }
 }

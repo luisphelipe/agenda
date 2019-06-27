@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     protected $fillable = [
-        'client', 'service', 'schedule', 'description'
+        'client', 'service', 'schedule', 'description', 'archived_at'
     ];
 
     public function owner()

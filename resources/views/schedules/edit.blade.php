@@ -16,25 +16,25 @@
 
                 <label for="client">Cliente*</label> 
                 <div class="input-group">
-                    <input class="form-control" type="text" name="client" id="client" placeholder="Selecione a cliente" value="{{ $schedule->client }}">
+                    <input class="form-control" type="text" name="client" placeholder="Selecione a cliente" value="{{ $schedule->client }}">
                 </div>
 
                 <label for="service">Servico*</label>
                 <div class="input-group">
-                    <input class="form-control" type="text" name="service" id="service" placeholder="Selecione o servico" value="{{ $schedule->service }}">
+                    <input class="form-control" type="text" name="service" placeholder="Selecione o servico" value="{{ $schedule->service }}">
                 </div>
 
                 <label for="schedule">Data*</label>
                 <div class="input-group">
-                    <input type="datetime-local" class="form-control" id="schedule" name="schedule" value="{{ str_replace(" ", "T", $schedule->schedule) }}">
+                    <input type="datetime-local" class="form-control" name="schedule" value="{{ str_replace(" ", "T", $schedule->schedule) }}">
                 </div>
 
                 <label for="description">Descrição</label>
-                <div class="form-group">
-                    <textarea class="form-control" id="description" name="description" rows="3">{{ $schedule->description }}</textarea>
+                <div class="input-group mb-4">
+                    <textarea class="form-control" name="description" rows="3">{{ $schedule->description }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Editar Agendamento</button>
-                <a href="/schedules" class="ml-3">Cancelar</a>
+                <a href="{{ $schedule->link() }}" class="ml-3">Cancelar</a>
             </form>
         </div>
     </div>

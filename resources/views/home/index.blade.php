@@ -15,12 +15,16 @@
             <div id="home-right-panel-top" class="card mb-2 pl-2 pt-1">
                 <div class="card-body">
                     <h4 class="card-title">Acoes</h4>
-                    <a href="{{ route('schedules.create') }}">{{ __('Criar agendamento') }}</a> 
+                    <p class="mb-2"><a href="{{ route('schedules.create') }}">{{ __('Criar agendamento') }}</a></p>
+                    <p><a href="{{ route('reminders.create') }}">{{ __('Criar lembrete') }}</a></p>
                 </div>
             </div>
             <div id="home-right-panel-bot" class="card pl-2 pt-1">
                 <div class="card-body">
                     <h4 class="card-title">Lembretes</h4>
+                    @foreach ($reminders as $reminder)
+                        <p class="card-text"><a href="{{ $reminder->link() }}">{{ $reminder->text }}</a></p>
+                    @endforeach
                 </div>
             </div>
         </div>

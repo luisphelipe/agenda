@@ -20,7 +20,10 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::resource('schedules', 'SchedulesController');
-    Route::resource('services', 'ServicesController');
-    Route::resource('clients', 'ClientsController');
+    Route::resource('schedules', 'ScheduleController');
+    Route::get('/schedules/{schedule}/archive', 'ScheduleController@archive');
+
+    Route::resource('reminders', 'ReminderController');
+    Route::resource('services', 'ServiceController');
+    Route::resource('clients', 'ClientController');
 });

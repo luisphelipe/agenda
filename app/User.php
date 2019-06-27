@@ -39,9 +39,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function reminders()
+    {
+        return $this->hasMany(Reminder::class);
+    }
+
     public function schedules()
     {
         return $this->hasMany(Schedule::class);
+    }
+
+    public function todayReminders()
+    {
+        return $this->reminders()
+            ->whereDate('date', '=', Carbon::now())
+            ->orWhereNull('date');
     }
 
     public function todaySchedules()
@@ -50,8 +62,8 @@ class User extends Authenticatable
             ->whereDate('schedule', '=', Carbon::now());
     }
 
-    public function owns(Schedule $schedule)
+    public function owns(object $item)
     {
-        return $this->id == $schedule->user_id;
+        return $this->id == $item->user_id;
     }
 }
