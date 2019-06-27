@@ -26,7 +26,7 @@
 
                 <label for="schedule">Data*</label>
                 <div class="input-group">
-                    <input type="datetime-local" class="form-control" name="schedule" value="{{ str_replace(" ", "T", $schedule->schedule) }}">
+                    <input type="datetime-local" class="form-control" name="schedule" value="{{ $schedule->formFriendlySchedule() }}">
                 </div>
 
                 <label for="description">Descrição</label>

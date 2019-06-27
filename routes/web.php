@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/schedules/{schedule}/archive', 'ScheduleController@archive');
 
     Route::resource('reminders', 'ReminderController');
+    Route::get('/reminders/{reminder}/close', 'ReminderController@close');
+
     Route::resource('services', 'ServiceController');
     Route::resource('clients', 'ClientController');
 });

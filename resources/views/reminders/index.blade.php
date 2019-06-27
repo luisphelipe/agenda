@@ -17,7 +17,7 @@
                 @foreach ($reminders as $reminder)
                     <div class="d-flex justify-content-between">
                         <p><a href={{ $reminder->link() }}>{{ $reminder->text }} 
-                            {{ $reminder->date ? '- ' . $reminder->formattedDate() : '' }}
+                            {{ $reminder->closed_at ? '- Fechado' : ($reminder->date ? '- ' . $reminder->date : '') }}
                         </a></p>
                         <p class="mr-4"><a href={{ $reminder->link() . "/edit" }}>Editar</a></p>
                 </div>

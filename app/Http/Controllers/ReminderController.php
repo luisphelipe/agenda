@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Reminder;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ReminderController extends Controller
@@ -16,17 +17,29 @@ class ReminderController extends Controller
     {
         $nullDateReminders = auth()->user()
             ->reminders()
+            ->whereNull('closed_at')
             ->whereNull('date')
             ->get();
 
         $reminders = auth()->user()
             ->reminders()
+            ->whereNull('closed_at')
             ->whereNotNull('date')
             ->orderBy('date', 'ASC')
             ->get();
 
+        $closedReminders = auth()->user()
+            ->reminders()
+            ->whereNotNull('closed_at')
+            ->orderBy('date', 'DESC')
+            ->get();
+
+        $fullReminderList = $nullDateReminders
+            ->concat($reminders)
+            ->concat($closedReminders);
+
         return view('reminders.index', [
-            'reminders' => $nullDateReminders->concat($reminders)
+            'reminders' => $fullReminderList
         ]);
     }
 
@@ -129,5 +142,19 @@ class ReminderController extends Controller
         $reminder->delete();
 
         return redirect()->action('ReminderController@index');
+    }
+
+    public function close(Reminder $reminder)
+    {
+        abort_unless(auth()->user()->owns($reminder), 401);
+
+        $reminder->update([
+            'closed_at' => (String)Carbon::now()
+        ]);
+
+        return redirect()->action(
+            'ReminderController@show',
+            ['reminder' => $reminder]
+        );
     }
 }

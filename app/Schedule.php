@@ -20,8 +20,20 @@ class Schedule extends Model
         return '/schedules/' . $this->id;
     }
 
-    public function formattedSchedule()
+    public function getScheduleAttribute($schedule)
     {
-        return date_format(date_create($this->schedule), 'd/m/Y H:i:s');
+        if (!$schedule) return null;
+        return date_format(date_create($schedule), 'd/m/Y H:i:s');
+    }
+
+    public function getArchivedAtAttribute($archived_at)
+    {
+        if (!$archived_at) return null;
+        return date_format(date_create($archived_at), 'd/m/Y H:i:s');
+    }
+
+    public function formFriendlySchedule()
+    {
+        return str_replace(" ", "T", $this->getOriginal('schedule'));
     }
 }

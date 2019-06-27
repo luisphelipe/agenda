@@ -10,7 +10,7 @@
         <div class="card-body">
             <p class="card-text">{{ $schedule->client }}</p>
             <p class="card-text">{{ $schedule->service }}</p>
-            <p class="card-text">{{ $schedule->formattedSchedule() }}</p>
+            <p class="card-text">{{ $schedule->schedule }}</p>
             @if ($schedule->archived_at)
                 <p class="card-text">Arquivado em: {{ $schedule->archived_at }}</p>
             @endif

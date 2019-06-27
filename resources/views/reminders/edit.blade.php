@@ -21,7 +21,7 @@
 
                <label for="schedule">Data</label>
                 <div class="input-group mb-4">
-                    <input type="datetime-local" class="form-control" name="date" value="{{ str_replace(" ", "T", $reminder->date) }}">
+                    <input type="datetime-local" class="form-control" name="date" value="{{ $reminder->formFriendlyDate() }}">
                 </div>
 
                <button type="submit" class="btn btn-primary">Editar lembrete</button>

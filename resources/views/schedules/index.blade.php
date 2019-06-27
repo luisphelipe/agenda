@@ -17,7 +17,7 @@
             @foreach ($schedules as $schedule)
                 <div class="d-flex justify-content-between">
                     <p><a href={{ $schedule->link() }}>{{ $schedule->client }} - 
-                        {{ $schedule->archived_at ? 'Arquivado' : $schedule->formattedSchedule() }}
+                        {{ $schedule->archived_at ? 'Arquivado' : $schedule->schedule }}
                     </a></p>
                     <p class="mr-4"><a href={{ $schedule->link() . "/edit" }}>Editar</a></p>
                 </div>

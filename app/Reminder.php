@@ -20,8 +20,20 @@ class Reminder extends Model
         return '/reminders/' . $this->id;
     }
 
-    public function formattedDate()
+    public function getDateAttribute($date)
     {
-        return date_format(date_create($this->date), 'd/m/Y H:i:s');
+        if (!$date) return null;
+        return date_format(date_create($date), 'd/m/Y H:i:s');
+    }
+
+    public function getClosedAtAttribute($closed_at)
+    {
+        if (!$closed_at) return null;
+        return date_format(date_create($closed_at), 'd/m/Y H:i:s');
+    }
+
+    public function formFriendlyDate()
+    {
+        return str_replace(" ", "T", $this->getOriginal('date'));
     }
 }

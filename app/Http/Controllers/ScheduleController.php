@@ -27,8 +27,11 @@ class ScheduleController extends Controller
             ->orderBy('schedule', 'DESC')
             ->get();
 
+        $fullScheduleList = $schedules
+            ->concat($archivedSchedules);
+
         return view('schedules.index', [
-            'schedules' => $schedules->concat($archivedSchedules)
+            'schedules' => $fullScheduleList
         ]);
     }
 

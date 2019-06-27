@@ -9,11 +9,19 @@
     <div class="card w-100 pl-2 pt-1">
         <div class="card-body">
             <p class="card-text">{{ $reminder->text }}</p>
-            <p class="card-text">{{ $reminder->date ? $reminder->formattedDate() : 'Data nao especificada' }}</p>
+            <p class="card-text">{{ $reminder->date ? $reminder->date : 'Data nao especificada' }}</p>
+            @if ($reminder->closed_at)
+                <p class="card-text">Fechado em: {{ $reminder->closed_at }}</p>
+            @endif
 
             <p>
                 <div class="d-flex justify-content-between">
-                    <a href={{ $reminder->link() . "/edit" }}>Editar</a>
+                    <div>
+                        <a href={{ $reminder->link() . "/edit" }}>Editar</a>
+                        @unless ($reminder->closed_at)
+                            <a class="ml-4" href={{ $reminder->link() . "/close" }}>Fechar</a>
+                        @endunless
+                    </div>
                     <a href={{ $reminder->link() }} onclick="submitDeleteForm(event)" class="mr-4 red-link">Excluir</a>
                 </div>
             </p>
