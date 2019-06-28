@@ -22,7 +22,7 @@
 <body>
     <div id="app">
         <div class="row w-100 m-0">
-            <div style="padding: 0px">
+            <div id="left-navbar-wrapper" style="padding: 0px">
                 @include('layouts.left_navbar')
             </div>
             <div id="excluding-sidebar" style="padding: 0px">

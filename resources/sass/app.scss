@@ -132,3 +132,18 @@ a.red-link:hover {
 #lower-nav-links {
     background-color: $color2;
 }
+
+// burg and logic for hiding left navbar
+
+#burg:hover {
+    cursor: pointer;
+}
+
+#left-navbar-wrapper.hidden {
+    display: none;
+}
+
+#excluding-sidebar.expanded {
+    margin-left: 0;
+    width: 100%
+}

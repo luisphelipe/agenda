@@ -1,5 +1,6 @@
 <nav id="top-navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
+        <img id="burg" onclick="toggleNavbar()" src="{{ URL::to('/') }}/burg_icon.png" alt="NAV" style="height: 1rem" class="mr-3">
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
@@ -42,3 +43,13 @@
         </div>
     </div>
 </nav>
+
+<script>
+    function toggleNavbar() {
+        const leftNavbar = document.getElementById("left-navbar-wrapper"),
+            topNavbar = document.getElementById("excluding-sidebar");
+
+        leftNavbar.classList.toggle('hidden');
+        topNavbar.classList.toggle('expanded');
+    }
+</script>

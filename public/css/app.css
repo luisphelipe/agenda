@@ -10786,3 +10786,16 @@ a.red-link:hover {
   background-color: #c8dad3;
 }
 
+#burg:hover {
+  cursor: pointer;
+}
+
+#left-navbar-wrapper.hidden {
+  display: none;
+}
+
+#excluding-sidebar.expanded {
+  margin-left: 0;
+  width: 100%;
+}
+
