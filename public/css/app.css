@@ -10685,13 +10685,9 @@ div#app > div > div > nav#left-navbar > div > div {
 
 div#app > div > div > nav#left-navbar,
 div#app > div > div > nav#left-navbar > div {
-  /* Set the width of the sidebar */
-  width: 25%;
-  /* Fixed Sidebar (stay in place on scroll) */
+  width: 20%;
   position: fixed;
-  /* Stay on top */
   z-index: 1;
-  /* Stay at the top */
   top: 0;
   left: 0;
   padding-top: 1.5rem;
@@ -10721,10 +10717,9 @@ nav {
 }
 
 div#excluding-sidebar {
-  margin-left: 25%;
-  width: 75%;
+  margin-left: 20%;
+  width: 80%;
   position: absolute;
-  /* Stay on top */
   top: 0;
 }
 
@@ -10786,7 +10781,19 @@ a.red-link:hover {
   background-color: #c8dad3;
 }
 
-#burg:hover {
+#burg {
+  height: 1rem;
+}
+
+#burg-container {
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#burg-container:hover {
   cursor: pointer;
 }
 
@@ -10797,5 +10804,55 @@ a.red-link:hover {
 #excluding-sidebar.expanded {
   margin-left: 0;
   width: 100%;
+}
+
+#burg-close {
+  position: fixed;
+  top: 0.4rem;
+  right: 0.4rem;
+  padding-top: 1.5rem;
+  z-index: 2;
+  width: 2rem;
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  div#home-right-panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  div#home-left-panel,
+  div#home-right-panel-top,
+  div#home-right-panel-bot {
+    height: auto;
+    padding-bottom: 1rem;
+  }
+
+  div#home-right-panel,
+  div#home-left-panel {
+    width: 95%;
+  }
+
+  div#home-right-panel-top,
+  div#home-right-panel-bot {
+    margin-top: 0.4rem;
+    margin-bottom: 0.4rem !important;
+    height: auto;
+  }
+
+  div#app > div > div > nav#left-navbar,
+  div#app > div > div > nav#left-navbar > div {
+    /* Set the width of the sidebar */
+    width: 100%;
+  }
+
+  div.card-body {
+    padding: 0.25rem !important;
+  }
+
+  #burg-close.active {
+    display: inline !important;
+  }
 }
 

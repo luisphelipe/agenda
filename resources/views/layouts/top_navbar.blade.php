@@ -1,6 +1,30 @@
+<script>
+    function toggleNavbar() {
+        const leftNavbar = document.getElementById("left-navbar-wrapper"),
+            topNavbar = document.getElementById("excluding-sidebar"),
+            burgClose = document.getElementById("burg-close");
+
+        leftNavbar.classList.toggle('hidden');
+        topNavbar.classList.toggle('expanded');
+        burgClose.classList.toggle('active');
+
+        // console.log(leftNavbar.className !== 'hidden');
+        sessionStorage.setItem('navbarStatus', leftNavbar.className);
+
+    }
+
+    const mobileClient = document.documentElement.clientWidth < 700;
+
+    if (sessionStorage.getItem('navbarStatus') === 'hidden' || mobileClient) {
+        toggleNavbar();
+    }
+</script>
+
 <nav id="top-navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
-        <img id="burg" onclick="toggleNavbar()" src="{{ URL::to('/') }}/burg_icon.png" alt="NAV" style="height: 1rem" class="mr-3">
+        <div onclick="toggleNavbar()" id="burg-container">
+            <img id="burg" src="{{ URL::to('/') }}/burg_icon.png" alt="NAV" class="mr-3">
+        </div>
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
@@ -43,13 +67,3 @@
         </div>
     </div>
 </nav>
-
-<script>
-    function toggleNavbar() {
-        const leftNavbar = document.getElementById("left-navbar-wrapper"),
-            topNavbar = document.getElementById("excluding-sidebar");
-
-        leftNavbar.classList.toggle('hidden');
-        topNavbar.classList.toggle('expanded');
-    }
-</script>

@@ -1,5 +1,6 @@
 <nav id="left-navbar">
     <div class="container mt-4">
+        <img id="burg-close" onclick="toggleNavbar()" src="{{ URL::to('/') }}/burg_close.jpg" alt="close NAV" class="mr-3 active">
         <ul class="navbar-nav w-100">
             <div>
                 <li class="nav-item">
