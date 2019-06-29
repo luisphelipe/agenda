@@ -10,6 +10,9 @@
                     <a class="nav-link" href="{{ route('schedules.index') }}">{{ __('Agendamentos') }}</a> 
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('services.index') }}">{{ __('Servicos') }}</a> 
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('reminders.index') }}">{{ __('Lembretes') }}</a> 
                 </li>
             </div>

@@ -1,31 +1,27 @@
 @extends('layouts.app')
 
 @section('custom-links')
-    @include('reminders.__links')
+    @include('services.__links')
 @endsection
 
 @section('content')
 <div class="container">
     <div class="card w-100 pl-2 pt-1">
         <div class="card-body">
-            <p class="card-text">{{ $reminder->text }}</p>
-            <p class="card-text">{{ $reminder->date ? $reminder->date : 'Data nao especificada' }}</p>
-            @if ($reminder->closed_at)
-                <p class="card-text">Fechado em: {{ $reminder->closed_at }}</p>
-            @endif
+            <p class="card-text">{{ $service->title }}</p>
+            <p class="card-text">{{ $service->price }}</p>
+            <p class="card-text">{{ $service->duration }}</p>
+            <p class="card-text mr-4">{{ $service->description }}</p>
 
             <p>
                 <div class="d-flex justify-content-between">
                     <div>
-                        <a href={{ $reminder->link() . "/edit" }}>Editar</a>
-                        @unless ($reminder->closed_at)
-                            <a class="ml-4" href={{ $reminder->link() . "/close" }}>Fechar</a>
-                        @endunless
+                        <a href={{ $service->link() . "/edit" }}>Editar</a>
                     </div>
                     <a href="/" onclick="submitDeleteForm(event)" class="mr-4 red-link">Excluir</a>
                 </div>
             </p>
-            <form id="deleteForm" action="{{ $reminder->link() }}" method="POST">
+            <form id="deleteForm" action="{{ $service->link() }}" method="POST">
                 @method('DELETE')
                 @csrf
             </form>

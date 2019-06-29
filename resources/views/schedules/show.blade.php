@@ -24,7 +24,7 @@
                             <a class="ml-4" href={{ $schedule->link() . "/archive" }}>Arquivar</a>
                         @endunless
                     </div>
-                    <a href={{ $schedule->link() }} onclick="submitDeleteForm(event)" class="mr-4 red-link">Excluir</a>
+                    <a href="/" onclick="submitDeleteForm(event)" class="mr-4 red-link">Excluir</a>
                 </div>
             </p>
             <form id="deleteForm" action="{{ $schedule->link() }}" method="POST">

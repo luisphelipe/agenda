@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->hasMany(Reminder::class);
     }
 
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
+
     public function schedules()
     {
         return $this->hasMany(Schedule::class);
