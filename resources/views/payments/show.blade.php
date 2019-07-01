@@ -6,7 +6,7 @@
         <div class="card-body">
             <p class="card-text">{{ $payment->schedule->client }}</p>
             <p class="card-text"><a href="{{ $payment->schedule->link() }}">{{ $payment->schedule->schedule }}</a></p>
-            <p class="card-text">{{ $payment->value }}</p>
+            <p class="card-text">R$ {{ $payment->value }}</p>
             <p class="card-text">{{ $payment->type }}</p>
 
             <p>

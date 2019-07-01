@@ -12,7 +12,7 @@
             <h4 class="card-title mb-4">Pagamentos</h4>
             @foreach ($payments as $payment)
                 <div class="d-flex justify-content-between">
-                    <p><a href={{ $payment->link() }}>{{ $payment->schedule->client }} - {{ 'R$' . $payment->value }}</a></p>
+                    <p><a href={{ $payment->link() }}>{{ $payment->schedule->client }}</a> - {{ 'R$' . $payment->value }}</p>
                     {{-- <p class="mr-4"><a href={{ $payment->link() . "/edit" }}>Editar</a></p> --}}
                 </div>
             @endforeach

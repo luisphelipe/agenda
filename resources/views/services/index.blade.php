@@ -26,7 +26,7 @@
             <h4 class="card-title mb-4">Servicos</h4>
             @foreach ($services as $service)
                 <div class="d-flex justify-content-between">
-                    <p><a href={{ $service->link() }}>{{ $service->title }} - {{ 'R$' . $service->price }}</a></p>
+                    <p><a href={{ $service->link() }}>{{ $service->title }}</a> - {{ 'R$' . $service->price }}</p>
                     <p class="mr-4"><a href={{ $service->link() . "/edit" }}>Editar</a></p>
                 </div>
             @endforeach

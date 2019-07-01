@@ -26,9 +26,9 @@
             <h4 class="card-title mb-4">Agendamentos</h4>
             @foreach ($schedules as $schedule)
                 <div class="d-flex justify-content-between">
-                    <p><a href={{ $schedule->link() }}>{{ $schedule->client }} - 
+                    <p><a href={{ $schedule->link() }}>{{ $schedule->client }}</a> - 
                         {{ $schedule->archived_at ? 'Arquivado' : $schedule->schedule }}
-                    </a></p>
+                    </p>
                     <p class="mr-4"><a href={{ $schedule->link() . "/edit" }}>Editar</a></p>
                 </div>
             @endforeach

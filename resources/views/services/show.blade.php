@@ -9,8 +9,8 @@
     <div class="card w-100 pl-2 pt-1">
         <div class="card-body">
             <p class="card-text">{{ $service->title }}</p>
-            <p class="card-text">{{ $service->price }}</p>
-            <p class="card-text">{{ $service->duration }}</p>
+            <p class="card-text">R$ {{ $service->price }}</p>
+            <p class="card-text">{{ $service->duration }} minutos</p>
             <p class="card-text mr-4">{{ $service->description }}</p>
 
             <p>

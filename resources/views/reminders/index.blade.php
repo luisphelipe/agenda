@@ -16,9 +16,9 @@
             <h4 class="card-title mb-4">Lembretes</h4>
                 @foreach ($reminders as $reminder)
                     <div class="d-flex justify-content-between">
-                        <p><a href={{ $reminder->link() }}>{{ $reminder->text }} 
+                        <p><a href={{ $reminder->link() }}>{{ $reminder->text }}</a>
                             {{ $reminder->closed_at ? '- Fechado' : ($reminder->date ? '- ' . $reminder->date : '') }}
-                        </a></p>
+                        </p>
                         <p class="mr-4"><a href={{ $reminder->link() . "/edit" }}>Editar</a></p>
                 </div>
             @endforeach
