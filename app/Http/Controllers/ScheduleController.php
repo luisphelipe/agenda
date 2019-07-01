@@ -14,13 +14,14 @@ class ScheduleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $schedules = auth()->user()
             ->schedules()
+            ->where('client', 'LIKE', "%{$request->input('search')}%")
             ->orderBy('archived_at', 'DESC')
             ->orderBy('schedule', 'ASC')
-            ->paginate(10);
+            ->paginate(15);
 
         return view('schedules.index', [
             'schedules' => $schedules

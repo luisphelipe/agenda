@@ -6,11 +6,11 @@
 
 @section('content')
 <div class="container">
-    <div class="card w-100 pl-2 pt-1 mb-2">
+    {{-- <div class="card w-100 pl-2 pt-1 mb-2">
         <div class="card-body">
             <h4 class="card-title mb-4">Pesquisa e filtros</h4>
         </div>
-    </div>
+    </div> --}}
     <div class="card w-100 pl-2 pt-1">
         <div class="card-body">
             <h4 class="card-title mb-4">Lembretes</h4>

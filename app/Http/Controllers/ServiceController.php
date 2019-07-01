@@ -12,12 +12,13 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $services = auth()->user()
             ->services()
+            ->where('title', 'LIKE', "%{$request->input('search')}%")
             ->orderBy('updated_at', 'DESC')
-            ->paginate(10);
+            ->paginate(15);
 
         return view('services.index', [
             'services' => $services

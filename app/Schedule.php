@@ -33,13 +33,13 @@ class Schedule extends Model
     public function getScheduleAttribute($schedule)
     {
         if (!$schedule) return null;
-        return date_format(date_create($schedule), 'd/m/Y H:i:s');
+        return date_format(date_create($schedule), 'd/m/Y H:i');
     }
 
     public function getArchivedAtAttribute($archived_at)
     {
         if (!$archived_at) return null;
-        return date_format(date_create($archived_at), 'd/m/Y H:i:s');
+        return date_format(date_create($archived_at), 'd/m/Y H:i');
     }
 
     public function formFriendlySchedule()

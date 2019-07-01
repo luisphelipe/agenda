@@ -17,7 +17,7 @@ class PaymentController extends Controller
         $payments = auth()->user()
             ->payments()
             ->orderBy('updated_at', 'DESC')
-            ->paginate(10);
+            ->paginate(15);
 
         return view('payments.index', [
             'payments' => $payments

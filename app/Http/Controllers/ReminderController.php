@@ -19,7 +19,7 @@ class ReminderController extends Controller
             ->reminders()
             ->orderBy('closed_at', 'DESC')
             ->orderBy('date', 'ASC')
-            ->paginate(10);
+            ->paginate(15);
 
         return view('reminders.index', [
             'reminders' => $reminders

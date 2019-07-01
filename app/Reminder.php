@@ -23,13 +23,13 @@ class Reminder extends Model
     public function getDateAttribute($date)
     {
         if (!$date) return null;
-        return date_format(date_create($date), 'd/m/Y H:i:s');
+        return date_format(date_create($date), 'd/m/Y H:i');
     }
 
     public function getClosedAtAttribute($closed_at)
     {
         if (!$closed_at) return null;
-        return date_format(date_create($closed_at), 'd/m/Y H:i:s');
+        return date_format(date_create($closed_at), 'd/m/Y H:i');
     }
 
     public function formFriendlyDate()
