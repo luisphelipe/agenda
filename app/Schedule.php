@@ -20,6 +20,11 @@ class Schedule extends Model
         return $this->belongsToMany(Service::class);
     }
 
+    public function payment()
+    {
+        return $this->hasOne(Payment::class);
+    }
+
     public function link()
     {
         return '/schedules/' . $this->id;

@@ -15,7 +15,21 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('schedule_id');
+
+            $table->float('value', 8, 2);
+            $table->unsignedInteger('type');
+
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('schedule_id')
+                ->references('id')->on('schedules')
+                ->onDelete('cascade');
         });
     }
 

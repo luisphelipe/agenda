@@ -27,4 +27,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reminders/{reminder}/close', 'ReminderController@close');
 
     Route::resource('services', 'ServiceController');
+
+    Route::resource('payments', 'PaymentController')->except(
+        ['create', 'edit']
+    );
 });

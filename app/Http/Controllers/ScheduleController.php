@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Schedule;
+use App\Payment;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -91,7 +92,8 @@ class ScheduleController extends Controller
         abort_unless(auth()->user()->owns($schedule), 401);
 
         return view('schedules.show', [
-            'schedule' => $schedule
+            'schedule' => $schedule,
+            'payment_types' => Payment::TYPES
         ]);
     }
 
@@ -103,6 +105,8 @@ class ScheduleController extends Controller
      */
     public function edit(Schedule $schedule)
     {
+        abort_unless(auth()->user()->owns($schedule), 401);
+
         return view('schedules.edit', [
             'schedule' => $schedule,
             'services' => auth()->user()->services

@@ -54,16 +54,23 @@ class User extends Authenticatable
         return $this->hasMany(Schedule::class);
     }
 
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
     public function todayReminders()
     {
         return $this->reminders()
             ->whereDate('date', '=', Carbon::now())
-            ->orWhereNull('date');
+            ->orWhereNull('date')
+            ->whereNull('closed_at');
     }
 
     public function todaySchedules()
     {
         return $this->schedules()
+            ->whereNull('archived_at')
             ->whereDate('schedule', '=', Carbon::now());
     }
 

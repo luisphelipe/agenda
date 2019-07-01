@@ -15,6 +15,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('reminders.index') }}">{{ __('Lembretes') }}</a> 
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('payments.index') }}">{{ __('Pagamentos') }}</a> 
+                </li>
             </div>
             <div id="lower-nav-links">
                 @yield('custom-links')

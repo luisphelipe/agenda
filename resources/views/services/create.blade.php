@@ -23,7 +23,7 @@
                     <input class="form-control" type="number" name="price" placeholder="Preco do servico" value={{ old('price') }}>
                 </div>
 
-                <label for="service">Duração*</label>
+                <label for="duration">Duração*</label>
                 <div class="input-group">
                     <input class="form-control" type="number" name="duration" placeholder="Duração do serviço" value={{ old('duration') }}>
                 </div>

@@ -99,6 +99,8 @@ class ReminderController extends Controller
      */
     public function edit(Reminder $reminder)
     {
+        abort_unless(auth()->user()->owns($reminder), 401);
+
         return view('reminders.edit', [
             'reminder' => $reminder
         ]);
@@ -149,7 +151,7 @@ class ReminderController extends Controller
         abort_unless(auth()->user()->owns($reminder), 401);
 
         $reminder->update([
-            'closed_at' => (String)Carbon::now()
+            'closed_at' => (string) Carbon::now()
         ]);
 
         return redirect()->action(

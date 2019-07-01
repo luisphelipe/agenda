@@ -82,6 +82,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
+        abort_unless(auth()->user()->owns($service), 401);
+
         return view('services.edit', [
             'service' => $service
         ]);
