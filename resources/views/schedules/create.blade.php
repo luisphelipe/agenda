@@ -15,14 +15,14 @@
 
                 <label for="client">Cliente*</label> 
                 <div class="input-group">
-                    <input class="form-control" type="text" name="client" placeholder="Selecione a cliente" value={{ old('client') }}>
+                    <input class="form-control" type="text" name="client" placeholder="Nome da Cliente" value={{ old('client') }}>
                 </div>
 
                 <div id="all-services">
-                    <label for="services[0]">Servico*</label>
+                    <label for="services[0]">Serviço*</label>
                     <div id="service-wrapper-0" class="input-group">
                         <select class="form-control" id="services[0]" name="services[0]" required>
-                            <option value="-1" disabled selected hidden>Selecione um servico</option>
+                            <option value="-1" disabled selected hidden>Selecione um Serviço</option>
                             @foreach($services as $service)
                                 <option value="{{ $service->id }}">{{ $service->title }}</option>
                             @endforeach
@@ -33,7 +33,7 @@
 
                     <div id="additional-service-wrapper" class="input-group mt-2 hidden">
                         <select class="form-control">
-                            <option value="" disabled selected hidden>Selecione um servico</option>
+                            <option value="" disabled selected hidden>Selecione um Serviço</option>
                             @foreach($services as $service)
                                 <option value="{{ $service->id }}">{{ $service->title }}</option>
                             @endforeach

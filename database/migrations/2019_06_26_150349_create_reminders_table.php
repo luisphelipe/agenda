@@ -19,6 +19,7 @@ class CreateRemindersTable extends Migration
 
             $table->string('text');
             $table->dateTime('date')->nullable();
+            $table->text('description')->nullable();
             $table->timestamp('closed_at')->nullable();
 
             $table->timestamps();

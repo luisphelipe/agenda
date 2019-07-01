@@ -55,8 +55,8 @@ class PaymentController extends Controller
             ->create($data);
 
         return redirect()->action(
-            'PaymentController@show',
-            ['payment' => $payment]
+            'ScheduleController@show',
+            ['schedule' => $payment->schedule]
         );
     }
 

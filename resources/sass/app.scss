@@ -124,6 +124,10 @@ a.red-link:hover {
     color: red !important;
 }
 
+.active-nav-link {
+    background-color: $color2;
+}
+
 #lower-nav-links {
     background-color: $color2;
 }

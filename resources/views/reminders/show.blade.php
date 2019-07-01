@@ -13,6 +13,7 @@
             @if ($reminder->closed_at)
                 <p class="card-text">Fechado em: {{ $reminder->closed_at }}</p>
             @endif
+            <p class="card-text mr-4">{{ $reminder->description }}</p>
 
             <p>
                 <div class="d-flex justify-content-between">

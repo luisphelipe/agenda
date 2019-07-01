@@ -19,11 +19,16 @@
                 </div>
 
                 <label for="schedule">Data</label>
-                <div class="input-group mb-4">
+                <div class="input-group">
                     <input type="datetime-local" class="form-control" name="date" value={{ old('date') }}>
                 </div>
 
-               <button type="submit" class="btn btn-primary">Criar lembrete</button>
+                <label for="description">Descrição</label>
+                <div class="input-group mb-4">
+                    <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
+                </div>
+
+               <button type="submit" class="btn btn-primary">Criar Lembrete</button>
                 <a href="/reminders" class="ml-3">Cancelar</a>
             </form>
         </div>

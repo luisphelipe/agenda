@@ -19,7 +19,7 @@
             @if ($schedule->payment) 
                 <p class="card-text"><a href="{{ $schedule->payment->link() }}">Pago R${{ $schedule->payment->value }}</a></p>
             @else
-                <p class="card-text">Aguardando pagamento</p>
+                <p class="card-text">Aguardando Pagamento</p>
             @endif
 
             @if ($schedule->archived_at)
@@ -55,7 +55,7 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Criar pagamento</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Criar Pagamento</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -70,7 +70,7 @@
                 
                                 <label for="type">Tipo*</label>
                                 <select class="form-control" id="type" name="type" required>
-                                    <option value="-1" disabled selected hidden>Selecione o tipo de pagamento</option>
+                                    <option value="-1" disabled selected hidden>Selecione o tipo de Pagamento</option>
                                     @foreach($payment_types as $index => $payment_type)
                                         <option value="{{ $index }}">{{ $payment_type }}</option>
                                     @endforeach

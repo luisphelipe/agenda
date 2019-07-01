@@ -20,11 +20,16 @@
                 </div>
 
                <label for="schedule">Data</label>
-                <div class="input-group mb-4">
+                <div class="input-group">
                     <input type="datetime-local" class="form-control" name="date" value="{{ $reminder->formFriendlyDate() }}">
                 </div>
 
-               <button type="submit" class="btn btn-primary">Editar lembrete</button>
+                <label for="description">Descrição</label>
+                <div class="input-group mb-4">
+                    <textarea class="form-control" name="description" rows="3">{{ $reminder->description }}</textarea>
+                </div>
+
+               <button type="submit" class="btn btn-primary">Editar Lembrete</button>
                 <a href="{{ $reminder->link() }}" class="ml-3">Cancelar</a>
             </form>
         </div>

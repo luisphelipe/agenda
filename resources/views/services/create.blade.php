@@ -15,17 +15,17 @@
 
                 <label for="client">Titulo*</label> 
                 <div class="input-group">
-                    <input class="form-control" type="text" name="title" placeholder="Nome do servico" value={{ old('service') }}>
+                    <input class="form-control" type="text" name="title" placeholder="Nome do Serviço" value={{ old('service') }}>
                 </div>
 
                 <label for="schedule">Preço*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="price" placeholder="Preco do servico" value={{ old('price') }}>
+                    <input class="form-control" type="number" name="price" placeholder="Preco do Serviço" value={{ old('price') }}>
                 </div>
 
                 <label for="duration">Duração*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="duration" placeholder="Duração do serviço" value={{ old('duration') }}>
+                    <input class="form-control" type="number" name="duration" placeholder="Duração do Serviço" value={{ old('duration') }}>
                 </div>
 
                 <label for="description">Descrição</label>

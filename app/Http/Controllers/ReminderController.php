@@ -47,6 +47,7 @@ class ReminderController extends Controller
         $data = $request->validate([
             'text' => 'required|string',
             'date' => 'nullable|date',
+            'description' => 'nullable|string'
         ]);
 
         $reminder = auth()->user()
@@ -103,7 +104,8 @@ class ReminderController extends Controller
         $data = $request->validate([
             'text' => 'nullable|string',
             'date' => 'nullable|date',
-            'closed_at' => 'nullable|date'
+            'closed_at' => 'nullable|date',
+            'description' => 'nullable|string'
         ]);
 
         $reminder->update($data);

@@ -10777,6 +10777,10 @@ a.red-link:hover {
   color: red !important;
 }
 
+.active-nav-link {
+  background-color: #c8dad3;
+}
+
 #lower-nav-links {
   background-color: #c8dad3;
 }

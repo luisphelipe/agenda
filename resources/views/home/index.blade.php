@@ -14,10 +14,10 @@
         <div id="home-right-panel" class="col-sm-6">
             <div id="home-right-panel-top" class="card mb-2 pl-2 pt-1">
                 <div class="card-body">
-                    <h4 class="card-title">Acoes</h4>
-                    <p class="mb-2"><a href="{{ route('schedules.create') }}">{{ __('Criar agendamento') }}</a></p>
-                    <p class="mb-2"><a href="{{ route('services.create') }}">{{ __('Criar servico') }}</a></p>
-                    <p><a href="{{ route('reminders.create') }}">{{ __('Criar lembrete') }}</a></p>
+                    <h4 class="card-title">Ações</h4>
+                    <p class="mb-2"><a href="{{ route('schedules.create') }}">{{ __('Criar Agendamento') }}</a></p>
+                    <p class="mb-2"><a href="{{ route('services.create') }}">{{ __('Criar Serviço') }}</a></p>
+                    <p><a href="{{ route('reminders.create') }}">{{ __('Criar Lembrete') }}</a></p>
                 </div>
             </div>
             <div id="home-right-panel-bot" class="card pl-2 pt-1">

@@ -7,5 +7,6 @@ $factory->define(App\Reminder::class, function (Faker $faker) {
         'user_id' => 1,
         'text' => $faker->sentence,
         'date' => $faker->dateTimeBetween('now', '+10 days'),
+        'description' => $faker->paragraph
     ];
 });
