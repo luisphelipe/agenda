@@ -15,31 +15,14 @@ class ReminderController extends Controller
      */
     public function index()
     {
-        $nullDateReminders = auth()->user()
-            ->reminders()
-            ->whereNull('closed_at')
-            ->whereNull('date')
-            ->get();
-
         $reminders = auth()->user()
             ->reminders()
-            ->whereNull('closed_at')
-            ->whereNotNull('date')
+            ->orderBy('closed_at', 'DESC')
             ->orderBy('date', 'ASC')
-            ->get();
-
-        $closedReminders = auth()->user()
-            ->reminders()
-            ->whereNotNull('closed_at')
-            ->orderBy('date', 'DESC')
-            ->get();
-
-        $fullReminderList = $nullDateReminders
-            ->concat($reminders)
-            ->concat($closedReminders);
+            ->paginate(10);
 
         return view('reminders.index', [
-            'reminders' => $fullReminderList
+            'reminders' => $reminders
         ]);
     }
 

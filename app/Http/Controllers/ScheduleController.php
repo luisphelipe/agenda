@@ -18,21 +18,12 @@ class ScheduleController extends Controller
     {
         $schedules = auth()->user()
             ->schedules()
-            ->whereNull('archived_at')
+            ->orderBy('archived_at', 'DESC')
             ->orderBy('schedule', 'ASC')
-            ->get();
-
-        $archivedSchedules = auth()->user()
-            ->schedules()
-            ->whereNotNull('archived_at')
-            ->orderBy('schedule', 'DESC')
-            ->get();
-
-        $fullScheduleList = $schedules
-            ->concat($archivedSchedules);
+            ->paginate(10);
 
         return view('schedules.index', [
-            'schedules' => $fullScheduleList
+            'schedules' => $schedules
         ]);
     }
 

@@ -17,7 +17,7 @@ class ServiceController extends Controller
         $services = auth()->user()
             ->services()
             ->orderBy('updated_at', 'DESC')
-            ->get();
+            ->paginate(10);
 
         return view('services.index', [
             'services' => $services

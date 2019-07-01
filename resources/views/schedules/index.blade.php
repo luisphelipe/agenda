@@ -23,6 +23,10 @@
                 </div>
             @endforeach
         </div>
+        
+        <div id="pagination" class="d-flex justify-content-around">
+            {{ $schedules->links() }}
+        </div>
     </div>
 </div>
 @endsection
