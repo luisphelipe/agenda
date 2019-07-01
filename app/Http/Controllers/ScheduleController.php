@@ -42,7 +42,9 @@ class ScheduleController extends Controller
      */
     public function create()
     {
-        return view('schedules.create');
+        return view('schedules.create', [
+            'services' => auth()->user()->services
+        ]);
     }
 
     /**
@@ -53,9 +55,15 @@ class ScheduleController extends Controller
      */
     public function store(Request $request)
     {
+        // security flaw known at implementations time:
+        // this validation doesnt prevent using another user service 
+        $services = $request->validate([
+            'services.0' => 'required|exists:services,id',
+            'services.*' => 'required|exists:services,id'
+        ])['services'];
+
         $data = $request->validate([
             'client' => 'required|string',
-            'service' => 'required|string',
             'schedule' => 'required|date',
             'description' => 'nullable|string',
         ]);
@@ -63,6 +71,8 @@ class ScheduleController extends Controller
         $schedule = auth()->user()
             ->schedules()
             ->create($data);
+
+        $schedule->services()->attach($services);
 
         return redirect()->action(
             'ScheduleController@show',
@@ -94,7 +104,8 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         return view('schedules.edit', [
-            'schedule' => $schedule
+            'schedule' => $schedule,
+            'services' => auth()->user()->services
         ]);
     }
 
@@ -109,14 +120,19 @@ class ScheduleController extends Controller
     {
         abort_unless(auth()->user()->owns($schedule), 401);
 
+        $services = $request->validate([
+            'services.*' => 'required|exists:services,id'
+        ])['services'];
+
         $data = $request->validate([
             'client' => 'nullable|string',
-            'service' => 'nullable|string',
             'schedule' => 'nullable|date',
             'description' => 'nullable|string',
         ]);
 
         $schedule->update($data);
+
+        $schedule->services()->sync($services);
 
         return redirect()->action(
             'ScheduleController@show',
@@ -144,7 +160,7 @@ class ScheduleController extends Controller
         abort_unless(auth()->user()->owns($schedule), 401);
 
         $schedule->update([
-            'archived_at' => (String)Carbon::now()
+            'archived_at' => (string) Carbon::now()
         ]);
 
         return redirect()->action(

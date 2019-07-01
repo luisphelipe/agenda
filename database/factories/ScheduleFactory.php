@@ -6,7 +6,6 @@ $factory->define(App\Schedule::class, function (Faker $faker) {
     return [
         'user_id' => 1,
         'client' => $faker->name,
-        'service' => $faker->word,
         'schedule' => $faker->dateTimeBetween('now', '+10 days'),
         'description' => $faker->paragraph
     ];

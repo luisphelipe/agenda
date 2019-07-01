@@ -18,7 +18,6 @@ class CreateSchedulesTable extends Migration
             $table->unsignedBigInteger('user_id');
 
             $table->string('client');
-            $table->string('service');
             $table->dateTime('schedule');
             $table->text('description')->nullable();
             $table->timestamp('archived_at')->nullable();

@@ -9,7 +9,11 @@
     <div class="card w-100 pl-2 pt-1">
         <div class="card-body">
             <p class="card-text">{{ $schedule->client }}</p>
-            <p class="card-text">{{ $schedule->service }}</p>
+
+            @foreach ($schedule->services as $service)
+                <p class="card-text"><a href="{{ $service->link() }}">{{ $service->title }}</a></p>
+            @endforeach
+
             <p class="card-text">{{ $schedule->schedule }}</p>
             @if ($schedule->archived_at)
                 <p class="card-text">Arquivado em: {{ $schedule->archived_at }}</p>

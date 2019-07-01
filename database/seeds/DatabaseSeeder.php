@@ -15,13 +15,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@test.com'
         ]);
 
-        factory(App\Service::class, 20)->create([
-            'user_id' => $admin->id
-        ]);
+        factory(App\Service::class, 20)->create(['user_id' => $admin->id])->each(function ($service) use ($admin) {
+            $schedule = factory(App\Schedule::class)->create([
+                'user_id' => $admin->id
+            ]);
 
-        factory(App\Schedule::class, 20)->create([
-            'user_id' => $admin->id
-        ]);
+            $schedule->services()->attach($schedule->id);
+        });
 
         factory(App\Reminder::class, 20)->create([
             'user_id' => $admin->id
