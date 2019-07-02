@@ -22,8 +22,12 @@
             background-size: cover;
             background-position: center;
         }
-                
 
+        #register-form *>label,
+        #login-form *>label {
+            margin-top: 0;
+        }
+                
         #app-name {
             position: absolute; 
             top: 10%; 
