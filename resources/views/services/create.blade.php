@@ -20,12 +20,12 @@
 
                 <label for="schedule">Preço*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="price" placeholder="Preco do Procedimento" value={{ old('price') }}>
+                    <input class="form-control" type="number" name="price" placeholder="Preço em Reais" value={{ old('price') }}>
                 </div>
 
                 <label for="duration">Duração*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="duration" placeholder="Duração do Procedimento" value={{ old('duration') }}>
+                    <input class="form-control" type="number" name="duration" placeholder="Duração em Minutos" value={{ old('duration') }}>
                 </div>
 
                 <label for="description">Descrição</label>

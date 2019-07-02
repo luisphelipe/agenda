@@ -7,7 +7,7 @@
             <div class="card-body">
                 <h4 class="card-title mb-4">Agenda do dia</h4>
                 @foreach ($schedules as $schedule)
-                    <p class="card-text"><a href="{{ $schedule->link() }}">{{ $schedule->client }} - {{ $schedule->schedule }}</a></p>
+                    <p class="card-text"><a href="{{ $schedule->link() }}">{{ $schedule->client }}</a> - {{ $schedule->schedule }}</p>
                 @endforeach
             </div>
         </div>

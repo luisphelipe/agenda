@@ -19,7 +19,7 @@
                     <input class="form-control" type="text" name="title" placeholder="Nome do Procedimento" value="{{ $service->title }}">
                 </div>
 
-                <label for="service">Preco*</label>
+                <label for="service">Preço*</label>
                 <div class="input-group">
                     <input class="form-control" type="number" name="price" value="{{ $service->price }}">
                 </div>
