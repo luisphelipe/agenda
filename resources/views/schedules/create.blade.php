@@ -51,8 +51,13 @@
                 <div class="input-group mb-4">
                     <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Agendar Cliente</button>
-                <a href="/schedules" class="ml-3">Cancelar</a>
+
+                @if(auth()->user()->services()->count())
+                    <button type="submit" class="btn btn-primary">Agendar Cliente</button>
+                    <a href="/schedules" class="ml-3">Cancelar</a>
+                @else
+                    <a href="/services/create" class="ml-3">Criar Procedimento</a>
+                @endif
             </form>
         </div>
     </div>
