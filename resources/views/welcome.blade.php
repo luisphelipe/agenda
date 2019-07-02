@@ -53,6 +53,31 @@
                 text-decoration: none;
                 text-transform: uppercase;
             }
+
+            body {
+                background-image: url('{{ URL::to('/') }}/welcome_background.jpg');
+                background-size: cover;
+                background-position: center;
+            }
+            
+            #app-name {
+                position: absolute; 
+                top: 10%; 
+            }
+
+            #app-name>h1 {
+                font-size: 10rem;
+            }
+
+            @media(max-width: 760px) {
+                #app-name {
+                    top: 30%
+                }
+
+                #app-name>h1 {
+                    font-size: 5rem;
+                }
+            }
         </style>
     </head>
     <body>
@@ -70,6 +95,13 @@
                     @endauth
                 </div>
             @endif
+
+        <div id="app-name">
+            <h1>
+                Agenda
+            </h1>
+        </div>
+
         </div>
     </body>
 </html>

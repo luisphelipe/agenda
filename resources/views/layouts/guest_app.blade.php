@@ -15,6 +15,26 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: url('{{ URL::to('/') }}/welcome_background.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+                
+
+        #app-name {
+            position: absolute; 
+            top: 10%; 
+        }
+
+        @media(max-width: 760px) {
+            #app-name {
+                top: 30%
+            }
+        }
+    </style>
 </head>
 
 <body>

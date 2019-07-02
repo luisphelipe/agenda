@@ -22,9 +22,13 @@
 
 <nav id="top-navbar" class="navbar navbar-expand-md navbar-light navbar-laravel">
     <div class="container">
+
+        @auth
         <div onclick="toggleNavbar()" id="burg-container">
             <img id="burg" src="{{ URL::to('/') }}/burg_icon.png" alt="NAV" class="mr-3">
         </div>
+        @endguest
+
         <a class="navbar-brand" href="{{ url('/') }}">
             {{ config('app.name', 'Laravel') }}
         </a>
