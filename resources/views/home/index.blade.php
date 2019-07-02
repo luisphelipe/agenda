@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h4 class="card-title">Ações</h4>
                     <p class="mb-2"><a href="{{ route('schedules.create') }}">{{ __('Criar Agendamento') }}</a></p>
-                    <p class="mb-2"><a href="{{ route('services.create') }}">{{ __('Criar Serviço') }}</a></p>
+                    <p class="mb-2"><a href="{{ route('services.create') }}">{{ __('Criar Procedimento') }}</a></p>
                     <p><a href="{{ route('reminders.create') }}">{{ __('Criar Lembrete') }}</a></p>
                 </div>
             </div>

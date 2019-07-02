@@ -15,24 +15,24 @@
 
                 <label for="client">Titulo*</label> 
                 <div class="input-group">
-                    <input class="form-control" type="text" name="title" placeholder="Nome do Serviço" value={{ old('service') }}>
+                    <input class="form-control" type="text" name="title" placeholder="Nome do Procedimento" value={{ old('service') }}>
                 </div>
 
                 <label for="schedule">Preço*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="price" placeholder="Preco do Serviço" value={{ old('price') }}>
+                    <input class="form-control" type="number" name="price" placeholder="Preco do Procedimento" value={{ old('price') }}>
                 </div>
 
                 <label for="duration">Duração*</label>
                 <div class="input-group">
-                    <input class="form-control" type="number" name="duration" placeholder="Duração do Serviço" value={{ old('duration') }}>
+                    <input class="form-control" type="number" name="duration" placeholder="Duração do Procedimento" value={{ old('duration') }}>
                 </div>
 
                 <label for="description">Descrição</label>
                 <div class="input-group mb-4">
                     <textarea class="form-control" name="description" rows="3">{{ old('description') }}</textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Registar Serviço</button>
+                <button type="submit" class="btn btn-primary">Registar Procedimento</button>
                 <a href="/services" class="ml-3">Cancelar</a>
             </form>
         </div>

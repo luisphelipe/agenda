@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div id="login-card" class="card">
                 <div class="card-header">{{ __('Entrar') }}</div>
 
                 <div class="card-body">
-                    <form id="login-form" method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -43,15 +43,15 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Entrar') }}
-                                </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}" style="border: none">
                                         {{ __('Esqueceu sua senha?') }}
                                     </a>
                                 @endif
+
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Entrar') }}
+                                </button>
                             </div>
                         </div>
                     </form>

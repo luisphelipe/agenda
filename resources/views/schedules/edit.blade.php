@@ -20,7 +20,7 @@
                 </div>
 
                 <div id="all-services">
-                    <label for="services[0]">Serviço*</label>
+                    <label for="services[0]">Procedimento*</label>
 
                     @foreach ($schedule->services as $index => $schedule_service)
                     <div id="{{ $index > 0 ? 'additional-' : '' }}service-wrapper-{{ $index }}" class="input-group">
@@ -45,7 +45,7 @@
 
                     <div id="additional-service-wrapper" class="input-group mt-2 hidden">
                         <select class="form-control">
-                            <option value="" disabled selected hidden>Selecione um Serviço</option>
+                            <option value="" disabled selected hidden>Selecione um Procedimento</option>
                             @foreach($services as $service)
                                 <option value="{{ $service->id }}">{{ $service->title }}</option>
                             @endforeach

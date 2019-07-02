@@ -12,7 +12,7 @@
                     <a class="nav-link {{ $current_uri == 'schedules' ? 'active-nav-link' : ''}}" href="{{ route('schedules.index') }}">{{ __('Agendamentos') }}</a> 
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ $current_uri == 'services' ? 'active-nav-link' : ''}}" href="{{ route('services.index') }}">{{ __('Serviços') }}</a> 
+                    <a class="nav-link {{ $current_uri == 'services' ? 'active-nav-link' : ''}}" href="{{ route('services.index') }}">{{ __('Procedimentos') }}</a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ $current_uri == 'reminders' ? 'active-nav-link' : ''}}" href="{{ route('reminders.index') }}">{{ __('Lembretes') }}</a> 

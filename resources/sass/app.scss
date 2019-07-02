@@ -167,8 +167,8 @@ li.nav-item>a {
 
 #burg-close {
     position: fixed;
-    top: .4rem;
-    right: .4rem;
+    top: 0;
+    right: 24%;
     padding-top: 1.5rem;
     z-index: 2;
     width: 2rem;
@@ -203,7 +203,7 @@ li.nav-item>a {
     div#app>div>div>nav#left-navbar,
     div#app>div>div>nav#left-navbar>div {
         /* Set the width of the sidebar */
-        width: 100%;
+        width: 75%;
     }
 
     div.card-body {
@@ -212,5 +212,10 @@ li.nav-item>a {
 
     #burg-close.active {
         display: inline !important;
+    }
+
+    div#excluding-sidebar {
+        margin-left: 0 !important;
+        width: 100% !important;
     }
 }

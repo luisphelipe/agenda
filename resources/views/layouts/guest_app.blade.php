@@ -37,6 +37,10 @@
             #app-name {
                 top: 30%
             }
+
+            #login-card {
+                margin-top: 20%
+            }
         }
     </style>
 </head>
